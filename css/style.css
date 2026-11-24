@@ -5,12 +5,12 @@
 }
 
 html {
-    background-color: #101010;
+    background-color: #181818;
 }
 
 body {
     font-family: 'Space Grotesk', 'Arial', 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-    background-color: #101010;
+    background-color: #181818;
     color: #f5f5f0;
     min-height: 100vh;
     overflow-x: hidden;
@@ -24,10 +24,10 @@ body::before {
     z-index: 0;
     pointer-events: none;
     background:
-        radial-gradient(ellipse 80% 50% at 50% 0%,   rgba(255, 80, 80, 0.07) 0%, transparent 60%),
-        radial-gradient(ellipse 70% 50% at 50% 100%, rgba(255, 45, 45, 0.06) 0%, transparent 55%),
-        radial-gradient(ellipse 50% 40% at 15% 50%,  rgba(255, 80, 80, 0.04) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 40% at 85% 50%,  rgba(255, 45, 45, 0.04) 0%, transparent 60%);
+        radial-gradient(ellipse 80% 50% at 50% 0%,   rgba(255, 45, 45, 0.1) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 50% at 50% 100%, rgba(255, 45, 45, 0.08) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 15% 50%,  rgba(255, 45, 45, 0.05) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 85% 50%,  rgba(255, 45, 45, 0.05) 0%, transparent 60%);
 }
 
 body::after {
@@ -37,8 +37,8 @@ body::after {
     z-index: 0;
     pointer-events: none;
     background-image:
-        linear-gradient(rgba(245, 245, 240, 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(245, 245, 240, 0.035) 1px, transparent 1px);
+        linear-gradient(rgba(245, 245, 240, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(245, 245, 240, 0.04) 1px, transparent 1px);
     background-size: 80px 80px;
     mask-image: radial-gradient(ellipse at center, #000 20%, transparent 78%);
     -webkit-mask-image: radial-gradient(ellipse at center, #000 20%, transparent 78%);
@@ -49,7 +49,7 @@ body::after {
     position: fixed;
     inset: 0;
     z-index: 9999;
-    background-color: #101010;
+    background-color: #181818;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -65,8 +65,8 @@ body::after {
     position: absolute;
     inset: 0;
     background-image:
-        linear-gradient(rgba(245, 245, 240, 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(245, 245, 240, 0.035) 1px, transparent 1px);
+        linear-gradient(rgba(245, 245, 240, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(245, 245, 240, 0.04) 1px, transparent 1px);
     background-size: 80px 80px;
     mask-image: radial-gradient(ellipse at center, #000 20%, transparent 80%);
     -webkit-mask-image: radial-gradient(ellipse at center, #000 20%, transparent 80%);
@@ -246,47 +246,42 @@ body.is-loaded .main-content {
     background: linear-gradient(90deg, rgba(255, 45, 45, 0.4), rgba(245, 245, 240, 0.06));
 }
 
-/* ===== Сетка платформ ===== */
+/* ===== Сетка платформ (ВЕРТИКАЛЬНАЯ) ===== */
 .links-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 1px;
-    padding: 1px;
+    grid-template-columns: 1fr; /* Выстраиваем в один столбец */
+    gap: 12px; /* Отступ между кнопками */
+    max-width: 600px; /* Ограничиваем ширину, чтобы кнопки не были слишком длинными */
+    margin: 0 auto; /* Выравниваем по центру */
+    width: 100%;
     padding-bottom: 48px;
-    align-content: start; /* Прижимает карточки к верху */
-    /* Убрали flex: 1, чтобы карточки не растягивались на весь экран */
+    align-content: start;
 }
 
+/* ===== Карточки ===== */
 .link-card {
-    background-color: #1e1e1e;
-    padding: 22px 20px 20px;
+    background: linear-gradient(145deg, #201515 0%, #1a1a1a 100%);
+    padding: 14px 16px;
     display: flex;
     flex-direction: column;
     position: relative;
     cursor: pointer;
-    min-height: 180px; /* Уменьшенная высота карточек */
+    min-height: 100px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 45, 45, 0.2);
     overflow: hidden;
     text-decoration: none;
     color: inherit;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.link-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background-color: #ff2d2d;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s ease;
+.link-card:hover {
+    background: linear-gradient(145deg, #2a1818 0%, #1f1f1f 100%);
+    border-color: #ff2d2d;
+    box-shadow: 0 8px 25px rgba(255, 45, 45, 0.15);
+    transform: translateY(-2px);
 }
-
-.link-card:hover::before { transform: scaleX(1); }
-.link-card:hover { background-color: #242424; }
-.link-card:hover .link-card-name { color: #ff2d2d; }
 
 .link-card:focus-visible {
     outline: 2px solid #ff2d2d;
@@ -295,52 +290,56 @@ body.is-loaded .main-content {
 
 .link-card-code {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 10px;
+    font-size: 9px;
     letter-spacing: 0.15em;
-    color: rgba(245, 245, 240, 0.35);
+    color: rgba(255, 45, 45, 0.6);
     text-transform: uppercase;
-    margin-bottom: 14px;
+    margin-bottom: 8px;
 }
 
 .link-card-icon {
-    width: 48px;
-    height: 48px;
+    width: 34px;
+    height: 34px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(245, 245, 240, 0.15);
-    background-color: #151515;
-    color: rgba(245, 245, 240, 0.8);
-    margin-bottom: 16px;
-    transition: color 0.3s ease, border-color 0.3s ease,
-                box-shadow 0.3s ease, transform 0.3s ease;
+    border: 1px solid rgba(255, 45, 45, 0.4);
+    background-color: rgba(255, 45, 45, 0.08);
+    color: #ff2d2d;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
 }
 
-.link-card-icon svg { width: 22px; height: 22px; display: block; }
+.link-card-icon svg { width: 16px; height: 16px; display: block; }
 
 .link-card:hover .link-card-icon {
-    color: #ff2d2d;
+    color: #181818;
+    background-color: #ff2d2d;
     border-color: #ff2d2d;
-    transform: translateY(-2px);
-    box-shadow: 0 0 24px rgba(255, 45, 45, 0.25);
+    box-shadow: 0 0 15px rgba(255, 45, 45, 0.5);
 }
 
 .link-card-name {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 700;
     letter-spacing: 0.02em;
     text-transform: uppercase;
     color: #f5f5f0;
-    margin-bottom: 6px;
+    margin-bottom: 2px;
     transition: color 0.3s ease;
 }
 
+.link-card:hover .link-card-name {
+    color: #ff2d2d;
+}
+
 .link-card-handle {
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: 0.04em;
     color: rgba(245, 245, 240, 0.4);
-    margin-bottom: 14px;
+    margin-bottom: 8px;
     word-break: break-word;
 }
 
@@ -350,19 +349,19 @@ body.is-loaded .main-content {
     justify-content: space-between;
     align-items: center;
     gap: 12px;
-    padding-top: 12px;
-    border-top: 1px solid rgba(245, 245, 240, 0.1);
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 45, 45, 0.15);
 }
 
 .link-card-tag {
-    font-size: 10px;
+    font-size: 8px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: rgba(245, 245, 240, 0.5);
 }
 
 .link-card-arrow {
-    font-size: 14px;
+    font-size: 12px;
     line-height: 1;
     color: #ff2d2d;
     transition: transform 0.3s ease;
@@ -372,6 +371,7 @@ body.is-loaded .main-content {
     transform: translate(2px, -2px);
 }
 
+/* Анимация появления */
 .link-card {
     opacity: 0;
     transform: translateY(14px);
@@ -417,22 +417,23 @@ body.is-loaded .link-card:nth-child(5) { animation-delay: 0.29s; }
     color: rgba(245, 245, 240, 0.35);
 }
 
-/* ===== Адаптив ===== */
+/* ===== Адаптив для планшетов ===== */
 @media (max-width: 900px) {
     .main-content { padding: 0 24px; }
     .top-bar { padding: 16px 0; }
     .page-header { padding: 32px 0 24px; }
 
-    .links-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
-    .link-card { padding: 18px 16px 16px; min-height: 170px; }
-    .link-card-name { font-size: 16px; }
-
+    .links-grid { 
+        max-width: 100%; /* На планшетах можно растянуть пошире */
+    }
+    
     .bottom-bar { padding: 12px 0; flex-direction: column; gap: 8px; align-items: flex-start; }
     .bottom-bar-right { gap: 16px; }
 }
 
+/* ===== Адаптив для телефонов ===== */
 @media (max-width: 480px) {
-    .main-content { padding: 0 8px; }
+    .main-content { padding: 0 10px; }
 
     .top-bar { padding: 12px 0; }
     .section-title { font-size: 12px; }
@@ -443,48 +444,52 @@ body.is-loaded .link-card:nth-child(5) { animation-delay: 0.29s; }
     .page-subtitle { font-size: 11px; margin-top: 14px; }
 
     .counter-bar {
-        padding: 0 0 20px;
+        padding: 0 0 16px;
         font-size: 10px;
         gap: 10px;
     }
 
-    .links-grid { grid-template-columns: 1fr; padding-bottom: 28px; }
+    .links-grid { 
+        padding-bottom: 20px; 
+        gap: 8px; 
+    }
 
     .link-card {
-        padding: 14px 12px 12px;
-        min-height: 150px; /* Ещё меньше высота для телефонов */
+        padding: 8px 12px;
+        min-height: 70px;
+        border-radius: 6px;
     }
 
     .link-card-code {
-        font-size: 9px;
-        margin-bottom: 12px;
+        display: none;
     }
 
     .link-card-icon {
-        width: 40px;
-        height: 40px;
-        margin-bottom: 14px;
+        width: 26px; 
+        height: 26px;
+        margin-bottom: 4px;
+        border-radius: 4px;
     }
-
-    .link-card-icon svg { width: 18px; height: 18px; }
+    .link-card-icon svg { width: 14px; height: 14px; }
 
     .link-card-name {
-        font-size: 15px;
-        margin-bottom: 4px;
+        font-size: 13px;
+        margin-bottom: 0;
     }
 
     .link-card-handle {
-        font-size: 10px;
-        margin-bottom: 12px;
+        font-size: 9px;
+        margin-bottom: 4px;
     }
 
-    .link-card-meta { padding-top: 10px; }
+    .link-card-meta { 
+        padding-top: 4px; 
+    }
 
-    .link-card-tag { font-size: 9px; }
+    .link-card-tag { font-size: 8px; }
+    .link-card-arrow { font-size: 10px; }
 
-    .link-card-arrow { font-size: 13px; }
-
-    .bottom-bar { padding: 10px 0; }
+    .bottom-bar { padding: 10px 0; flex-direction: column; gap: 6px; align-items: center; text-align: center; }
     .bottom-bar-left { font-size: 9px; }
     .bottom-bar-right { font-size: 9px; gap: 12px; }
 }
